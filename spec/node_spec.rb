@@ -1,8 +1,8 @@
 require "./lib/node"
 describe Node do
-  describe "#node.value" do 
+  describe "#node.value" do
     it "returns node.value" do
-      node = Node.new("A",2)
+      node = Node.new("A", 2)
       expect(node.value).to eql("A")
     end
   end
