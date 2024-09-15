@@ -1,9 +1,10 @@
 class Huffman
-  attr_accessor :word, :frequencies
+  attr_accessor :word, :frequencies, :sorted_frequencies
 
   def initialize(word = nil)
     @word = word
     @frequencies = {}
+    @sorted_frequencies = []
   end
 
   def map_frequency
@@ -19,12 +20,8 @@ class Huffman
     @frequencies = frequency_hash
   end
 
-  def sort_values
+  def sort_frequencies
     sorted_hash_by_value = @frequencies.sort_by { |_key, value| value }
-    sorted_hash_by_value.reverse!
-    p sorted_hash_by_value
+    @sort_frequencies = sorted_hash_by_value.reverse!
   end
 end
-my_huff = Huffman.new("AABCBAD")
-my_huff.map_frequency
-my_huff.sort_values
