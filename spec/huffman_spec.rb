@@ -58,7 +58,8 @@ describe Huffman do
       my_huff = Huffman.new("AAABBBCCDE")
       my_huff.create_tree
       my_huff.tree.pretty_print
-      expect(my_huff.tree.root.value).to eql(7).and expect(my_huff.tree.root.right_node.value).to eql(6)
+      expect(my_huff.tree.root.value).to eql(10)
+      expect(my_huff.tree.root.left_node.value).to eql(6)
     end
   end
 end

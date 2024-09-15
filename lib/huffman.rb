@@ -65,8 +65,10 @@ class Huffman
   def create_tree
     sort_frequencies_to_arr
     until sorted_frequencies.length == 1
+      # binding.pry
       create_subtree
       add_subtree
+      @sorted_frequencies = @sorted_frequencies.sort_by(&:last).reverse!
     end
   end
 end
