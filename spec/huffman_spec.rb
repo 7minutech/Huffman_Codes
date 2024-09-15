@@ -8,10 +8,18 @@ describe Huffman do
     end
   end
   describe "sort_frequencies" do
-    it "return the two least frequent elements" do
+    it "sort the frequencies" do
       my_huff = Huffman.new("AABCBAD")
       my_huff.map_frequency
       expect(my_huff.sort_frequencies).to eql([[:A, 3], [:B, 2], [:D, 1], [:C, 1]])
+    end
+  end
+  describe "least_two_frequencies" do
+    it "return the two least frequent elements" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.map_frequency
+      my_huff.sort_frequencies
+      expect(my_huff.least_two_frequencies).to eql([[:C, 1], [:D, 1]])
     end
   end
 end
