@@ -27,9 +27,7 @@ class Huffman
   end
 
   def least_two_frequencies
-    least_freqencies = []
-    2.times { least_freqencies.push(@sorted_frequencies.pop) }
-    least_freqencies
+    (1..2).map { |i| @sorted_frequencies[-i] }
   end
 
   def subtree(least_freqencies)
@@ -46,6 +44,8 @@ class Huffman
   end
 
   def add_subtree
-    sorted_frequencies.push subtree(least_two_frequencies)
+    subtree = subtree(least_two_frequencies)
+    2.times { sorted_frequencies.pop }
+    sorted_frequencies.push subtree
   end
 end
