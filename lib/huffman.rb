@@ -30,4 +30,17 @@ class Huffman
     2.times { least_freqencies.push(@sorted_frequencies.pop) }
     least_freqencies
   end
+
+  def subtree(least_freqencies)
+    next_entry = []
+    new_symbol = ""
+    new_frequency = 0
+    least_freqencies.each do |element|
+      new_symbol += element[0].to_s
+      new_frequency += element[1].to_i
+    end
+    next_entry.push new_symbol.to_sym
+    next_entry.push new_frequency
+    next_entry
+  end
 end
