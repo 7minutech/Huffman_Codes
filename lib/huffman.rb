@@ -1,3 +1,4 @@
+require "pry-byebug"
 class Huffman
   attr_accessor :word, :frequencies, :sorted_frequencies
 
@@ -20,7 +21,7 @@ class Huffman
     @frequencies = frequency_hash
   end
 
-  def sort_frequencies
+  def sort_frequencies_to_arr
     sorted_hash_by_value = @frequencies.sort_by { |_key, value| value }
     @sorted_frequencies = sorted_hash_by_value.reverse!
   end
