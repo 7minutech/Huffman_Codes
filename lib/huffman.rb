@@ -53,11 +53,11 @@ class Huffman
   end
 
   def create_subtree
-    left_node = least_two_frequencies[1][0]
-    right_node = least_two_frequencies[0][0]
+    left_node = least_two_frequencies[0][0]
+    right_node = least_two_frequencies[1][0]
     left_node = Node.new(left_node) unless left_node.is_a?(Node)
     right_node = Node.new(right_node) unless right_node.is_a?(Node)
-    @tree.root = Node.new(least_two_frequencies[1][1] + least_two_frequencies[0][1])
+    @tree.root = Node.new(least_two_frequencies[0][1] + least_two_frequencies[1][1])
     @tree.root.right_node = right_node
     @tree.root.left_node = left_node
   end
