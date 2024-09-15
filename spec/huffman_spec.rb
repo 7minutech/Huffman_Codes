@@ -31,4 +31,13 @@ describe Huffman do
       expect(my_huff.subtree(least_freqencies)).to eql([:CD, 2])
     end
   end
+  describe "add subtree" do
+    it "adds subtree to sorted frequncies" do
+      my_huff = Huffman.new("AABCCBADF")
+      my_huff.map_frequency
+      my_huff.sort_frequencies
+      my_huff.add_subtree
+      expect(my_huff.sorted_frequencies).to eql([[:A, 3], [:B, 2], [:CD, 2]])
+    end
+  end
 end
