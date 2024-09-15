@@ -7,4 +7,10 @@ describe Huffman do
       expect(my_huff.map_frequency).to eql({ A: 3, B: 2, C: 1, D: 1 })
     end
   end
+  describe "find_two_least" do
+    it "return the two least frequent elements" do
+      my_huff = Huffman.new("AABCBAD")
+      expect(my_huff.find_two_least).to eql({ C: 1, D: 1 })
+    end
+  end
 end
