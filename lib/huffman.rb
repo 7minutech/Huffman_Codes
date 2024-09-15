@@ -7,6 +7,7 @@ class Huffman
   def initialize(word = nil)
     @word = word
     @frequencies = {}
+    map_frequency
     @sorted_frequencies = []
     @tree = Tree.new
   end
@@ -59,5 +60,13 @@ class Huffman
     @tree.root = Node.new(least_two_frequencies[1][1] + least_two_frequencies[0][1])
     @tree.root.right_node = right_node
     @tree.root.left_node = left_node
+  end
+
+  def create_tree
+    sort_frequencies_to_arr
+    until sorted_frequencies.length == 1
+      create_subtree
+      add_subtree
+    end
   end
 end
