@@ -43,4 +43,8 @@ class Huffman
     next_entry.push new_frequency
     next_entry
   end
+
+  def add_subtree
+    sorted_frequencies.push subtree(least_two_frequencies)
+  end
 end
