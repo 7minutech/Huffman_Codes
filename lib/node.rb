@@ -2,9 +2,8 @@
 class Node
   attr_accessor :value, :frequency, :left_node, :right_node
 
-  def initialize(value, frequency)
+  def initialize(value)
     @value = value
-    @frequency = frequency
     @left_node = nil
     @right_node = nil
   end

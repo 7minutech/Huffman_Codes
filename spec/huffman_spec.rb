@@ -1,5 +1,7 @@
 require "./lib/huffman"
 
+require "pry-byebug"
+
 describe Huffman do
   describe "map_frequency" do
     it "returns string given to list with hash with key value pairs" do
@@ -48,5 +50,16 @@ describe Huffman do
     my_huff.add_subtree
     my_huff.add_subtree
     expect(my_huff.sorted_frequencies.sort.reverse!).to eql([[:DEC, 4], [:B, 3], [:A, 3]])
+  end
+
+  describe "create subtree" do
+    it "creates subtree" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.map_frequency
+      my_huff.sort_frequencies_to_arr
+      my_huff.create_subtree
+      my_huff.tree.pretty_print
+      expect(my_huff.tree.root.value).to eql(2)
+    end
   end
 end
