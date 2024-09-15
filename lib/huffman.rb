@@ -18,4 +18,13 @@ class Huffman
     frequency_hash.sort
     @frequencies = frequency_hash
   end
+
+  def sort_values
+    sorted_hash_by_value = @frequencies.sort_by { |_key, value| value }
+    sorted_hash_by_value.reverse!
+    p sorted_hash_by_value
+  end
 end
+my_huff = Huffman.new("AABCBAD")
+my_huff.map_frequency
+my_huff.sort_values
