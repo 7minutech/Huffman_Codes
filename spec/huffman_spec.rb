@@ -12,14 +12,12 @@ describe Huffman do
   describe "sort_frequencies_to_arr" do
     it "sort the frequencies" do
       my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
       expect(my_huff.sort_frequencies_to_arr).to eql([[:A, 3], [:B, 2], [:D, 1], [:C, 1]])
     end
   end
   describe "least_two_frequencies" do
     it "return the two least frequent elements" do
       my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
       my_huff.sort_frequencies_to_arr
       expect(my_huff.least_two_frequencies).to eql([[:C, 1], [:D, 1]])
     end
@@ -27,7 +25,6 @@ describe Huffman do
   describe "subtree" do
     it "adds popped elements back to array joined togther" do
       my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
       my_huff.sort_frequencies_to_arr
       least_freqencies = my_huff.least_two_frequencies
       expect(my_huff.subtree(least_freqencies)).to eql([:CD, 2])
@@ -37,21 +34,31 @@ describe Huffman do
   describe "create subtree" do
     it "creates subtree" do
       my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
       my_huff.sort_frequencies_to_arr
       my_huff.create_subtree
       my_huff.tree.pretty_print
       expect(my_huff.tree.root.value).to eql(2)
     end
-    it "creates two subtree" do
+    it "creates two subtrees" do
       my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
       my_huff.sort_frequencies_to_arr
       my_huff.create_subtree
       my_huff.add_subtree
       my_huff.create_subtree
       my_huff.tree.pretty_print
       expect(my_huff.tree.root.value).to eql(4)
+    end
+    it "creates three subtrees" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.create_tree
+      my_huff.tree.pretty_print
+      expect(my_huff.tree.root.value).to eql(7)
+    end
+    it "creats tree with identical frequincies" do
+      my_huff = Huffman.new("AAABBBCCDE")
+      my_huff.create_tree
+      my_huff.tree.pretty_print
+      expect(my_huff.tree.root.value).to eql(7).and expect(my_huff.tree.root.right_node.value).to eql(6)
     end
   end
 end
