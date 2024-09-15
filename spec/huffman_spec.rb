@@ -33,24 +33,6 @@ describe Huffman do
       expect(my_huff.subtree(least_freqencies)).to eql([:CD, 2])
     end
   end
-  describe "add subtree" do
-    it "adds subtree to sorted frequncies" do
-      my_huff = Huffman.new("AABCBAD")
-      my_huff.map_frequency
-      my_huff.sort_frequencies_to_arr
-      my_huff.add_subtree
-      expect(my_huff.sorted_frequencies).to eql([[:A, 3], [:B, 2], [:CD, 2]])
-    end
-  end
-
-  it "handles sorting" do
-    my_huff = Huffman.new("AABABBCDCE")
-    my_huff.map_frequency
-    my_huff.sort_frequencies_to_arr
-    my_huff.add_subtree
-    my_huff.add_subtree
-    expect(my_huff.sorted_frequencies.sort.reverse!).to eql([[:DEC, 4], [:B, 3], [:A, 3]])
-  end
 
   describe "create subtree" do
     it "creates subtree" do
@@ -60,6 +42,16 @@ describe Huffman do
       my_huff.create_subtree
       my_huff.tree.pretty_print
       expect(my_huff.tree.root.value).to eql(2)
+    end
+    it "creates two subtree" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.map_frequency
+      my_huff.sort_frequencies_to_arr
+      my_huff.create_subtree
+      my_huff.add_subtree
+      my_huff.create_subtree
+      my_huff.tree.pretty_print
+      expect(my_huff.tree.root.value).to eql(4)
     end
   end
 end

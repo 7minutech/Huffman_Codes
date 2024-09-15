@@ -47,9 +47,8 @@ class Huffman
   end
 
   def add_subtree
-    subtree = subtree(least_two_frequencies)
     2.times { sorted_frequencies.pop }
-    sorted_frequencies.push subtree
+    sorted_frequencies.push [tree.root, tree.root.value]
   end
 
   def create_subtree
