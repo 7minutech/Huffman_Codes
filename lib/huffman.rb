@@ -22,6 +22,12 @@ class Huffman
 
   def sort_frequencies
     sorted_hash_by_value = @frequencies.sort_by { |_key, value| value }
-    @sort_frequencies = sorted_hash_by_value.reverse!
+    @sorted_frequencies = sorted_hash_by_value.reverse!
+  end
+
+  def least_two_frequencies
+    least_freqencies = []
+    2.times { least_freqencies.push(@sorted_frequencies.pop) }
+    least_freqencies
   end
 end
