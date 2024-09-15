@@ -22,4 +22,13 @@ describe Huffman do
       expect(my_huff.least_two_frequencies).to eql([[:C, 1], [:D, 1]])
     end
   end
+  describe "subtree" do
+    it "adds popped elements back to array joined togther" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.map_frequency
+      my_huff.sort_frequencies
+      least_freqencies = my_huff.least_two_frequencies
+      expect(my_huff.subtree(least_freqencies)).to eql([:CD, 2])
+    end
+  end
 end
