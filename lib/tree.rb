@@ -1,5 +1,5 @@
 class Tree
   def initialize
-    @head = nil
+    @head = Node.new(nil)
   end
 end
