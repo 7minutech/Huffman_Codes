@@ -2,7 +2,7 @@ require "pry-byebug"
 require_relative "tree"
 require_relative "node"
 class Huffman
-  attr_accessor :word, :frequencies, :sorted_frequencies, :tree
+  attr_accessor :word, :frequencies, :sorted_frequencies, :tree, :encoding
 
   def initialize(word = nil)
     @word = word
@@ -71,5 +71,12 @@ class Huffman
       add_subtree
       @sorted_frequencies = @sorted_frequencies.sort_by(&:last).reverse!
     end
+  end
+
+  def create_encodings
+    @frequencies.each_key do |char|
+      @encoding[char] = tree.create_encoding(char.to_s)
+    end
+    @encoding
   end
 end
