@@ -70,4 +70,13 @@ describe Huffman do
       expect(my_huff.create_encodings).to eql({ A: [0], B: [1, 0], C: [1, 1, 0], D: [1, 1, 1] })
     end
   end
+  describe "find using code" do
+    it "search through tree using code" do
+      my_huff = Huffman.new("AABCBAD")
+      my_huff.create_tree
+      my_huff.create_encodings
+      my_huff.tree.pretty_print
+      expect(my_huff.find_using_code("C")).to eql(:A)
+    end
+  end
 end
