@@ -14,6 +14,7 @@ class Huffman
     @encoding = {}
   end
 
+  # puts the frequency of each char in a hash
   def map_frequency
     frequency_hash = {}
     word.chars.each do |char|
@@ -36,24 +37,14 @@ class Huffman
     (1..2).map { |i| @sorted_frequencies[-i] }
   end
 
-  def subtree(least_freqencies)
-    next_entry = []
-    new_symbol = ""
-    new_frequency = 0
-    least_freqencies.each do |element|
-      new_symbol += element[0].to_s
-      new_frequency += element[1].to_i
-    end
-    next_entry.push new_symbol.to_sym
-    next_entry.push new_frequency
-    next_entry
-  end
-
+  # removes two least frequencies
+  # and replaces with new node
   def add_subtree
     2.times { sorted_frequencies.pop }
     sorted_frequencies.push [tree.root, tree.root.value]
   end
 
+  # creats subtree with two least frequent chars
   def create_subtree
     left_node = least_two_frequencies[0][0]
     right_node = least_two_frequencies[1][0]
@@ -64,6 +55,7 @@ class Huffman
     @tree.root.left_node = left_node
   end
 
+  # creats entire tree from word
   def create_tree
     sort_frequencies_to_arr
     until sorted_frequencies.length == 1
@@ -74,6 +66,8 @@ class Huffman
     end
   end
 
+  # creats the huffman codes
+  # for tree traversal
   def create_encodings
     @frequencies.each_key do |char|
       @encoding[char] = tree.create_encoding(char.to_s)
@@ -81,6 +75,7 @@ class Huffman
     @encoding
   end
 
+  # traverse tree using huffman code
   def find_using_code(char)
     code = @encoding[char.to_sym]
     node = @tree.root
