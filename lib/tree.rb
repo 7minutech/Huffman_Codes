@@ -1,4 +1,4 @@
-require "pry-byebug"
+# describes a tree class with a root node
 class Tree
   attr_accessor :root
 
