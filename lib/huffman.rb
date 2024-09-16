@@ -79,4 +79,14 @@ class Huffman
     end
     @encoding
   end
+
+  def find_using_code(char)
+    code = @encoding[char.to_sym]
+    node = @tree.root
+    code.each do |value|
+      node = @tree.root.right_node if value == 1
+      node = @tree.root.left_node if value.zero?
+    end
+    node.value
+  end
 end
