@@ -10,6 +10,7 @@ class Huffman
     map_frequency
     @sorted_frequencies = []
     @tree = Tree.new
+    @encoding = {}
   end
 
   def map_frequency
