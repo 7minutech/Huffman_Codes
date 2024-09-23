@@ -1,4 +1,3 @@
-require "pry-byebug"
 require_relative "tree"
 require_relative "node"
 # describes a class which can use Huffman Codes
